@@ -1,0 +1,15 @@
+stages:
+  - test
+
+phpunit:
+  stage: test
+  script:
+    - composer install -q
+    - ./vendor/bin/phpunit
+    - cat ./report/phpunit.txt
+
+code sniffer:
+  stage: test
+  script:
+    - composer install -q
+    - ./vendor/bin/phpcs -p

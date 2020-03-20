@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  php:
+    build:
+      dockerfile: Dockerfile
+      context: ./.docker
+    volumes:
+      - .:/app
+      - ./.docker/php.ini:/usr/local/etc/php/php.ini
+      - ./.docker:/opt/docker
+    environment:
+      COMPOSER_ALLOW_SUPERUSER: 1
+    working_dir: /app
+    command: /opt/docker/start.sh
